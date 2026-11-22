@@ -1,0 +1,6 @@
+# Bỏ qua thư mục cấu hình tạm của Visual Studio (đang bị khóa file .vsidx)
+.vs/
+*.vsidx
+*.suo
+*.user
+

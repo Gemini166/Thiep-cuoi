@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Cưới | Đức Mạnh & Phương Uyên - 12.12.2026</title>
+  <meta name="description" content="Trân trọng kính mời Quý khách đến dự lễ thành hôn của Hoàng Đức Mạnh & Nguyễn Huỳnh Phương Uyên vào ngày 12.12.2026 tại Cát Đằng Palace." />
+  <meta property="og:title" content="Thiệp Mời Cưới | Đức Mạnh & Phương Uyên (12.12.2026)" />
+  <meta property="og:description" content="Sự hiện diện của Quý khách là niềm vinh hạnh cho gia đình chúng tôi!" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts hỗ trợ tiếng Việt có dấu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDFBF2;
+      --cream-dark: #F5EFE0;
+      --paper-border: #D9C8B4;
+      --burgundy: #73282C;
+      --burgundy-dark: #5A1D20;
+      --burgundy-light: #944045;
+      --gold-line: #C7AE8F;
+      --text-dark: #4A2527;
+      --shadow-soft: 0 20px 50px rgba(74, 24, 28, 0.16);
+      --shadow-card: 0 12px 32px rgba(60, 20, 22, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+      background-color: #EFE8D8;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(115, 40, 44, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(115, 40, 44, 0.05) 0%, transparent 50%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.25) 0px, rgba(255,255,255,0.25) 1px, transparent 1px, transparent 4px);
+      color: var(--burgundy);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      position: relative;
+    }
+
+    /* Hiệu ứng cánh hoa rơi nhẹ */
+    .petals-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -20px;
+      background: rgba(115, 40, 44, 0.15);
+      border-radius: 150% 0 150% 0;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-20px) rotate(0deg) translateX(0); opacity: 0; }
+      15% { opacity: 0.7; }
+      85% { opacity: 0.7; }
+      100% { transform: translateY(105vh) rotate(360deg) translateX(40px); opacity: 0; }
+    }
+
+    /* Nút bật nhạc + Quay lại phong bì ở góc trên */
+    .floating-controls {
+      position: fixed;
+      top: 16px;
+      right: 18px;
+      z-index: 50;
+      display: flex;
+      gap: 10px;
+    }
+
+    .pill-btn {
+      background: rgba(253, 251, 242, 0.94);
+      border: 1px solid var(--paper-border);
+      color: var(--burgundy);
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(115, 40, 44, 0.1);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .pill-btn:hover {
+      background: var(--burgundy);
+      color: var(--cream);
+      border-color: var(--burgundy);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ==========================================================
+       MÀN HÌNH 1: PHONG BÌ HÌNH CHỮ NHẬT TO (BAN ĐẦU HIỆN)
+       ========================================================== */
+    .envelope-screen {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      animation: fadeInScale 0.55s ease forwards;
+    }
+
+    .envelope-screen.hidden {
+      display: none;
+    }
+
+    .envelope-rect {
+      background: var(--cream);
+      border: 1.5px solid var(--paper-border);
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      min-height: 430px;
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      /* Vân giấy gân Nhật */
+      background-image: 
+        repeating-linear-gradient(90deg, rgba(199, 174, 143, 0.07) 0px, rgba(199, 174, 143, 0.07) 1px, transparent 1px, transparent 5px),
+        repeating-linear-gradient(0deg, rgba(199, 174, 143, 0.07) 0px, rgba(199, 174, 143, 0.07) 1px, transparent 1px, transparent 5px);
+    }
+
+    /* Đường viền nắp phong bì tam giác mờ phía trên tạo dáng phong bì thật */
+    .envelope-flap-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(217, 200, 180, 0.18) 0%, transparent 100%);
+      border-bottom: 1px dashed rgba(115, 40, 44, 0.22);
+    }
+
+    .envelope-inner-border {
+      margin: 16px;
+      border: 1.2px solid rgba(115, 40, 44, 0.32);
+      border-radius: 10px;
+      padding: 28px 36px 26px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Logo Monogram MU Oval */
+    .monogram-seal {
+      width: 68px;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.35s ease;
+      background: var(--cream);
+      border-radius: 50%;
+      padding: 4px;
+    }
+    .monogram-seal:hover {
+      transform: scale(1.06);
+    }
+
+    .envelope-center-content {
+      my: auto;
+      width: 100%;
+    }
+
+    .couple-script-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 6.5vw, 4.4rem);
+      color: var(--burgundy);
+      line-height: 1.15;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .couple-script-title span.groom {
+      display: block;
+      margin-right: 70px;
+    }
+    .couple-script-title span.bride {
+      display: block;
+      margin-left: 70px;
+    }
+
+    .save-the-date {
+      font-style: italic;
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+      color: var(--burgundy-light);
+      margin-top: 6px;
+    }
+
+    .envelope-bottom-area {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .guest-invite-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
+    }
+    .guest-invite-label {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .guest-name-dotted {
+      flex: 1;
+      border-bottom: 1.2px dotted var(--burgundy);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--burgundy);
+      padding: 0 10px 2px;
+      text-align: center;
+    }
+
+    .open-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--burgundy);
+      color: var(--cream);
+      border: 1px solid var(--burgundy);
+      padding: 11px 30px;
+      border-radius: 999px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(115, 40, 44, 0.28);
+      transition: all 0.3s ease;
+      animation: pulseBtn 2.4s infinite;
+    }
+    .open-card-cta:hover {
+      background: var(--burgundy-dark);
+      transform: translateY(-2px);
+    }
+    @keyframes pulseBtn {
+      0%, 100% { box-shadow: 0 6px 18px rgba(115, 40, 44, 0.28), 0 0 0 0 rgba(115, 40, 44, 0.3); }
+      50% { box-shadow: 0 6px 18px rgba(115, 40, 44, 0.28), 0 0 0 10px rgba(115, 40, 44, 0); }
+    }
+
+    /* ==========================================================
+       MÀN HÌNH 2: HAI TỜ THIỆP CHÍNH (ẨN BAN ĐẦU, BẤM MỚI HIỆN)
+       Thu gọn vừa khít 1 màn hình, không phải cuộn trang
+       ========================================================== */
+    .opened-cards-screen {
+      display: none;
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .opened-cards-screen.active {
+      display: block;
+      animation: fadeInScale 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.94) translateY(12px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        justify-content: flex-start;
+        padding-top: 56px;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+      .envelope-rect {
+        aspect-ratio: auto;
+        min-height: 390px;
+      }
+      .couple-script-title span.groom,
+      .couple-script-title span.bride {
+        margin: 0;
+      }
+    }
+
+    /* --- TỜ 1: THIỆP ĐỎ ĐÔ (LỄ THÀNH HÔN) - ĐÃ THU GỌN VỪA MÀN HÌNH --- */
+    .card-burgundy {
+      background-color: var(--burgundy);
+      background-image: 
+        radial-gradient(circle at 50% 35%, rgba(155, 60, 65, 0.28) 0%, transparent 70%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 5px);
+      color: var(--cream);
+      border-radius: 14px;
+      padding: 11px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-burgundy-inner {
+      border: 1px solid rgba(253, 251, 242, 0.65);
+      border-radius: 9px;
+      padding: 18px 14px 16px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .parents-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 0.82rem;
+      line-height: 1.38;
+    }
+    .parent-box h4 {
+      font-style: italic;
+      font-weight: 500;
+      font-size: 0.82rem;
+      margin-bottom: 2px;
+      opacity: 0.9;
+    }
+    .parent-box .parent-name {
+      font-weight: 600;
+      font-size: 0.86rem;
+      display: block;
+    }
+    .parent-box .parent-addr {
+      font-size: 0.74rem;
+      font-style: italic;
+      opacity: 0.9;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .announce-text {
+      font-size: 0.88rem;
+      line-height: 1.38;
+      margin-bottom: 8px;
+      letter-spacing: 0.2px;
+    }
+
+    .couple-names-formal {
+      margin-bottom: 6px;
+    }
+    .couple-names-formal .script-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.65rem, 2.5vw, 2.05rem);
+      font-weight: 400;
+      line-height: 1.18;
+      color: #FFFDF7;
+      display: block;
+      white-space: nowrap;
+    }
+    .couple-names-formal .amp {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.35rem;
+      margin: 1px 0;
+      display: block;
+      opacity: 0.9;
+    }
+    .couple-rank {
+      font-style: italic;
+      font-size: 0.8rem;
+      opacity: 0.88;
+      margin-top: 3px;
+    }
+
+    .burgundy-monogram {
+      margin: 4px auto 6px;
+      width: 44px;
+      height: 58px;
+    }
+
+    .ceremony-footer {
+      font-size: 0.86rem;
+      line-height: 1.42;
+    }
+    .ceremony-date {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      margin: 2px 0;
+    }
+    .lunar-date {
+      font-style: italic;
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+
+    /* --- TỜ 2: THIỆP KEM VÒM (TIỆC CƯỚI NHÀ HÀNG) - ĐÃ THU GỌN VỪA MÀN HÌNH --- */
+    .card-arch-wrapper {
+      background-color: var(--cream);
+      background-image: 
+        repeating-linear-gradient(90deg, rgba(199, 174, 143, 0.07) 0px, rgba(199, 174, 143, 0.07) 1px, transparent 1px, transparent 5px),
+        repeating-linear-gradient(0deg, rgba(199, 174, 143, 0.07) 0px, rgba(199, 174, 143, 0.07) 1px, transparent 1px, transparent 5px);
+      border-radius: 190px 190px 14px 14px;
+      padding: 11px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--paper-border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-arch-inner {
+      border: 1px solid rgba(115, 40, 44, 0.45);
+      border-radius: 180px 180px 9px 9px;
+      padding: 20px 16px 16px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--burgundy);
+      gap: 6px;
+    }
+
+    .arch-monogram {
+      width: 46px;
+      height: 60px;
+      margin: 0 auto 6px;
+    }
+
+    .invite-heading {
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .arch-guest-box {
+      border-bottom: 1px dotted var(--burgundy);
+      max-width: 230px;
+      margin: 0 auto 6px;
+      padding-bottom: 2px;
+      font-size: 1.12rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--burgundy);
+    }
+
+    .invite-subtext {
+      font-size: 0.84rem;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .venue-block {
+      margin-bottom: 6px;
+    }
+    .venue-name {
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: var(--burgundy);
+      white-space: nowrap;
+    }
+    .venue-address {
+      font-size: 0.84rem;
+      line-height: 1.35;
+      color: var(--text-dark);
+    }
+
+    .time-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* Cụm Lịch Thứ Bảy | 12 | Tháng 12 */
+    .date-display-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      max-width: 250px;
+      margin: 0 auto 2px;
+    }
+    .date-side {
+      flex: 1;
+      border-top: 1px solid var(--burgundy);
+      border-bottom: 1px solid var(--burgundy);
+      padding: 3px 2px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .date-center-num {
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0 2px;
+    }
+    .date-year {
+      font-size: 1.05rem;
+      letter-spacing: 2.5px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .thanks-quote {
+      font-size: 0.84rem;
+      line-height: 1.38;
+      margin: 6px 0;
+    }
+
+    /* 2 Icon Đón khách (Cổng hoa rèm) & Khai tiệc (Đĩa trái tim dao nĩa) */
+    .timeline-icons {
+      display: flex;
+      justify-content: center;
+      gap: 44px;
+      margin-top: 2px;
+    }
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .timeline-item svg {
+      width: 44px;
+      height: 40px;
+    }
+    .timeline-caption {
+      font-style: italic;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    /* Thanh nút dưới cùng của màn hình 2 (Xem bản đồ & Đóng lại phong bì) */
+    .bottom-actions-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-small-action {
+      background: var(--cream);
+      color: var(--burgundy);
+      border: 1px solid var(--burgundy);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(115, 40, 44, 0.1);
+    }
+    .btn-small-action:hover {
+      background: var(--burgundy);
+      color: var(--cream);
+    }
+
+    /* Modal Xem Sơ Đồ Đường Đi - Rộng ngang cỡ phong bì (780px) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(42, 12, 14, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+    }
+    .modal-backdrop.active {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--cream);
+      border: 2px solid var(--burgundy);
+      border-radius: 16px;
+      max-width: 780px;
+      width: 100%;
+      padding: 26px 28px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      animation: fadeInScale 0.3s ease forwards;
+    }
+    .drawn-map-box {
+      background: #FAF6E8;
+      border: 1.2px dashed var(--burgundy-light);
+      border-radius: 12px;
+      padding: 20px 18px;
+      margin: 14px 0 20px;
+    }
+    .drawn-map-svg {
+      width: 100%;
+      height: auto;
+      min-height: 320px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hiệu ứng cánh hoa rơi -->
+  <div class="petals-container" id="petalsContainer"></div>
+
+  <!-- ==========================================================
+       KHO HÌNH VẼ SVG CHUẨN THEO THIỆP GỐC (LOGO MU, CỔNG HOA, ĐĨA TRÁI TIM)
+       ========================================================== -->
+  <svg width="0" height="0" style="position:absolute; visibility:hidden;" aria-hidden="true">
+    <defs>
+      <!-- 1. Khung Oval uốn lượn cổ điển & Chữ M&U lồng nhau -->
+      <g id="monogram-mu-symbol">
+        <!-- Khung viền kép có tai uốn ở đỉnh và đáy y hệt ảnh -->
+        <path d="M 50 4 C 55 4, 59 9, 63 11 C 80 18, 91 39, 91 65 C 91 91, 80 112, 63 119 C 59 121, 55 126, 50 126 C 45 126, 41 121, 37 119 C 20 112, 9 91, 9 65 C 9 39, 20 18, 37 11 C 41 9, 45 4, 50 4 Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        <path d="M 50 8 C 54 8, 58 12.5, 61.5 14 C 77 20.5, 87 40, 87 65 C 87 90, 77 109.5, 61.5 116 C 58 117.5, 54 122, 50 122 C 46 122, 42 117.5, 38.5 116 C 23 109.5, 13 90, 13 65 C 13 40, 23 20.5, 38.5 14 C 42 12.5, 46 8, 50 8 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+        <!-- Nét hoa văn vương miện nhỏ ở đỉnh và đáy khung -->
+        <path d="M 42 10 Q 50 15 58 10" fill="none" stroke="currentColor" stroke-width="0.9"/>
+        <path d="M 42 120 Q 50 115 58 120" fill="none" stroke="currentColor" stroke-width="0.9"/>
+        <!-- Chữ M nét thanh nét đậm có đuôi uốn mềm bên trái -->
+        <path d="M 18 46 C 23 41, 29 41, 31 46 L 31 85" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M 27 85 L 35 85" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+        <path d="M 30 44 L 46 84 L 61 44 L 61 85" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 57 44 L 65 44 M 57 85 L 65 85" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Chữ U lồng bên phải chữ M -->
+        <path d="M 55 44 L 55 71 C 55 83, 64 88, 72 88 C 80 88, 84 82, 84 71 L 84 44" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M 51 44 L 59 44 M 80 44 L 88 44" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+        <!-- Dấu & nhỏ lồng ở chân chữ M và U -->
+        <text x="58" y="87" text-anchor="middle" fill="currentColor" font-family="'Great Vibes', cursive" font-size="18">&amp;</text>
+      </g>
+    </defs>
+  </svg>
+
+  <div class="container">
+
+    <!-- ==========================================================
+         MÀN HÌNH 1: PHONG BÌ HÌNH CHỮ NHẬT LỚN (MẶC ĐỊNH HIỆN)
+         ========================================================== -->
+    <section class="envelope-screen" id="envelopeScreen">
+      <div class="envelope-rect">
+        <div class="envelope-flap-line"></div>
+        <div class="envelope-inner-border">
+          
+          <!-- Logo Monogram MU trong khung Oval -->
+          <div class="monogram-seal" onclick="openInvitation()" title="Chạm để mở thiệp" style="color: #73282C;">
+            <svg viewBox="0 0 100 130" width="66" height="86">
+              <use href="#monogram-mu-symbol"/>
+            </svg>
+          </div>
+
+          <!-- Tên Cô Dâu & Chú Rể ở chính giữa phong bì -->
+          <div class="envelope-center-content">
+            <h1 class="couple-script-title">
+              <span class="groom">Đức Mạnh</span>
+              <span class="bride">Phương Uyên</span>
+            </h1>
+            <p class="save-the-date">Save The Date &nbsp;|&nbsp; 12.12.2026</p>
+          </div>
+
+          <!-- Dòng Kính mời & Nút Mở Thiệp -->
+          <div class="envelope-bottom-area">
+            <div class="guest-invite-line">
+              <span class="guest-invite-label">KÍNH MỜI</span>
+              <span class="guest-name-dotted" id="envelopeGuestName">&nbsp;</span>
+            </div>
+
+            <button class="open-card-cta" onclick="openInvitation()">
+              💌 Mở Thiệp Mời
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         MÀN HÌNH 2: HAI TỜ THIỆP BÊN TRONG (CHỈ HIỆN KHI BẤM MỞ THIỆP)
+         ========================================================== -->
+    <section class="opened-cards-screen" id="openedCardsScreen">
+      <div class="cards-grid">
+        
+        <!-- TỜ TRÁI: THIỆP ĐỎ ĐÔ (LỄ THÀNH HÔN) -->
+        <article class="card-burgundy">
+          <div class="card-burgundy-inner">
+            
+            <!-- Thông tin hai bên gia đình -->
+            <div class="parents-grid">
+              <div class="parent-box">
+                <h4>Nhà Trai</h4>
+                <span class="parent-name">Ông: Hoàng Văn Lực</span>
+                <span class="parent-name">Bà: Lê Thị Chuyên</span>
+                <span class="parent-addr">P. Tăng Nhơn Phú - TP. HCM</span>
+              </div>
+              <div class="parent-box">
+                <h4>Nhà Gái</h4>
+                <span class="parent-name">Bà: Huỳnh Ngọc Nga</span>
+                <span class="parent-name">&nbsp;</span>
+                <span class="parent-addr">P. Hòa Lợi - TP. HCM</span>
+              </div>
+            </div>
+
+            <!-- Lời báo tin & Tên Cô Dâu Chú Rể -->
+            <div>
+              <p class="announce-text">
+                Trân trọng báo tin<br>
+                Lễ Thành Hôn của con chúng tôi
+              </p>
+
+              <div class="couple-names-formal">
+                <span class="script-name">Hoàng Đức Mạnh</span>
+                <span class="amp">&amp;</span>
+                <span class="script-name">Nguyễn Huỳnh Phương Uyên</span>
+                <p class="couple-rank">Quý Nam &amp; Quý Nữ</p>
+              </div>
+
+              <!-- Logo Monogram MU màu kem -->
+              <div class="burgundy-monogram" style="color: #FDFBF2;">
+                <svg viewBox="0 0 100 130" width="46" height="60">
+                  <use href="#monogram-mu-symbol"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Giờ cử hành hôn lễ tại Tư Gia -->
+            <div class="ceremony-footer">
+              <p>Hôn lễ được cử hành tại <strong>Tư Gia</strong></p>
+              <p>Vào Lúc <strong>09:30</strong> - Thứ Bảy</p>
+              <div class="ceremony-date">12.12.2026</div>
+              <p class="lunar-date">(Nhằm ngày 04 tháng 11 năm Bính Ngọ)</p>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- TỜ PHẢI: THIỆP KEM HÌNH VÒM (TIỆC CƯỚI NHÀ HÀNG) -->
+        <article class="card-arch-wrapper">
+          <div class="card-arch-inner">
+            
+            <div>
+              <!-- Logo Monogram MU trên đỉnh vòm -->
+              <div class="arch-monogram" style="color: #73282C;">
+                <svg viewBox="0 0 100 130" width="48" height="62">
+                  <use href="#monogram-mu-symbol"/>
+                </svg>
+              </div>
+
+              <p class="invite-heading">Trân trọng kính mời</p>
+              <div class="arch-guest-box" id="archGuestName">&nbsp;</div>
+              <p class="invite-subtext">Đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại:</p>
+
+              <!-- Địa điểm nhà hàng -->
+              <div class="venue-block">
+                <h2 class="venue-name">CÁT ĐẰNG PALACE | TẦNG 1 - SẢNH RUBY</h2>
+                <p class="venue-address">
+                  Số 11 Đ. Trương Văn Thành, KP.4<br>
+                  P. Tăng Nhơn Phú, TP. HCM
+                </p>
+              </div>
+            </div>
+
+            <!-- Ngày giờ tiệc -->
+            <div>
+              <p class="time-label">VÀO LÚC: 11H00</p>
+              <div class="date-display-row">
+                <div class="date-side">THỨ BẢY</div>
+                <div class="date-center-num">12</div>
+                <div class="date-side">THÁNG 12</div>
+              </div>
+              <div class="date-year">2026</div>
+              <p class="lunar-date">(Nhằm ngày 04 tháng 11 năm Bính Ngọ)</p>
+
+              <p class="thanks-quote">
+                Sự hiện diện của Quý Khách<br>
+                là niềm vinh hạnh cho gia đình chúng tôi.
+              </p>
+            </div>
+
+            <!-- Icon Đón khách (Cổng hoa rèm lụa) & Khai tiệc (Đĩa trái tim dao nĩa) giống hệt thiệp -->
+            <div class="timeline-icons">
+              <div class="timeline-item">
+                <!-- Hình vẽ Cổng Hoa Cưới & Rèm Lụa (Đón khách) -->
+                <svg viewBox="0 0 72 64" fill="none" stroke="#73282C" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Mặt đất chân cổng -->
+                  <line x1="12" y1="56" x2="26" y2="56" stroke-width="1.2"/>
+                  <line x1="46" y1="56" x2="60" y2="56" stroke-width="1.2"/>
+                  <!-- Cột trái và khung vòm -->
+                  <line x1="19" y1="28" x2="19" y2="56" stroke-width="1.5"/>
+                  <path d="M 19 26 C 19 11, 53 11, 53 26 L 53 56" stroke-width="1.5"/>
+                  <path d="M 22 26 C 22 14, 50 14, 50 26" stroke-width="1" stroke-dasharray="1.5 1.5"/>
+                  <!-- Rèm lụa vén sang cột phải -->
+                  <path d="M 33 14 C 38 25, 46 33, 53 38" stroke-width="1.2"/>
+                  <path d="M 38 15 C 43 24, 49 31, 53 35" stroke-width="1"/>
+                  <path d="M 43 17 C 47 23, 51 28, 53 32" stroke-width="0.9"/>
+                  <!-- Phần chân rèm buông xuống cột phải -->
+                  <path d="M 53 36 C 48 42, 47 49, 48 56" stroke-width="1.2"/>
+                  <path d="M 53 38 C 50 44, 50 50, 51 56" stroke-width="1"/>
+                  <ellipse cx="52.5" cy="36.5" rx="2.5" ry="1.5" fill="#73282C"/>
+                  <!-- Chùm hoa lá góc trên bên trái cổng -->
+                  <circle cx="19" cy="21" r="3.5" fill="#FAF6E8" stroke-width="1.3"/>
+                  <circle cx="15" cy="24" r="3" fill="#FAF6E8" stroke-width="1.2"/>
+                  <circle cx="23" cy="18" r="2.8" fill="#FAF6E8" stroke-width="1.2"/>
+                  <circle cx="23" cy="24" r="2.5" fill="#FAF6E8" stroke-width="1.2"/>
+                  <circle cx="27" cy="15" r="2.2" fill="#FAF6E8" stroke-width="1.1"/>
+                  <!-- Lá và cành hoa rủ -->
+                  <path d="M 12 22 Q 8 25 11 27 M 14 28 Q 10 32 15 31 M 28 13 Q 32 10 30 15" stroke-width="1.1"/>
+                  <!-- Chùm hoa bên phải cổng -->
+                  <circle cx="53" cy="26" r="2.6" fill="#FAF6E8" stroke-width="1.2"/>
+                  <circle cx="55" cy="30" r="2.3" fill="#FAF6E8" stroke-width="1.1"/>
+                  <circle cx="51" cy="22" r="2" fill="#FAF6E8" stroke-width="1.1"/>
+                  <path d="M 56 24 Q 60 23 57 27 M 57 32 Q 61 34 56 35" stroke-width="1"/>
+                </svg>
+                <span class="timeline-caption">Đón khách: 11h00</span>
+              </div>
+
+              <div class="timeline-item">
+                <!-- Hình vẽ Đĩa Có Trái Tim Ở Giữa + Nĩa Trái + Dao Phải (Khai tiệc) -->
+                <svg viewBox="0 0 72 64" fill="none" stroke="#73282C" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Nĩa bên trái -->
+                  <path d="M 13 15 L 13 26 C 13 30, 18 30, 18 26 L 18 15" stroke-width="1.2"/>
+                  <line x1="15.5" y1="15" x2="15.5" y2="25" stroke-width="1.1"/>
+                  <path d="M 14.8 29 L 14 51 C 14 53, 17 53, 17 51 L 16.2 29" stroke-width="1.2"/>
+                  <!-- Đĩa tròn 2 viền + chấm trang trí vành đĩa -->
+                  <circle cx="36" cy="34" r="16.5" stroke-width="1.5"/>
+                  <circle cx="36" cy="34" r="13.5" stroke-width="0.9" stroke-dasharray="1.5 3.5"/>
+                  <circle cx="36" cy="34" r="11" stroke-width="1.2"/>
+                  <!-- Trái tim kẻ sọc ở chính giữa lòng đĩa -->
+                  <path d="M 36 40.5 C 36 40.5, 29 35.5, 29 31.2 C 29 28.8, 31.2 27.2, 33.4 27.2 C 34.8 27.2, 35.6 28, 36 29 C 36.4 28, 37.2 27.2, 38.6 27.2 C 40.8 27.2, 43 28.8, 43 31.2 C 43 35.5, 36 40.5, 36 40.5 Z" fill="#73282C" fill-opacity="0.25" stroke-width="1.3"/>
+                  <line x1="32" y1="29" x2="32" y2="36" stroke-width="0.8"/>
+                  <line x1="34.5" y1="29" x2="34.5" y2="38.5" stroke-width="0.8"/>
+                  <line x1="37.5" y1="29" x2="37.5" y2="38.5" stroke-width="0.8"/>
+                  <line x1="40" y1="29" x2="40" y2="36" stroke-width="0.8"/>
+                  <!-- Dao bên phải -->
+                  <path d="M 56 15 C 53 19, 53 29, 55.5 33 L 55 51 C 55 53, 58 53, 58 51 L 57.5 15 Z" stroke-width="1.2"/>
+                </svg>
+                <span class="timeline-caption">Khai tiệc: 12h00</span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Thanh nút nhỏ gọn bên dưới 2 thiệp -->
+      <div class="bottom-actions-bar">
+        <button class="btn-small-action" onclick="closeInvitation()">
+          ✉️ Đóng lại phong bì
+        </button>
+        <button class="btn-small-action" onclick="openMapModal()">
+          🗺️ Xem sơ đồ đường đi
+        </button>
+        <a class="btn-small-action" href="https://www.google.com/maps/search/?api=1&query=Cat+Dang+Palace+11+Truong+Van+Thanh+Tang+Nhon+Phu+Thu+Duc" target="_blank" rel="noopener">
+          📍 Mở Google Maps
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Modal Sơ Đồ Đường Đi (Chỉ hiện khi bấm Xem sơ đồ) -->
+  <div class="modal-backdrop" id="mapModal" onclick="if(event.target===this) closeMapModal()">
+    <div class="modal-box">
+      <h3 style="font-size: 1.55rem; color: var(--burgundy);">Sơ Đồ Hướng Dẫn Đường Đi</h3>
+      <div class="drawn-map-box">
+        <svg class="drawn-map-svg" viewBox="0 0 720 350" fill="none" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Montserrat', sans-serif;">
+          <defs>
+            <!-- Đầu mũi tên sắc nét đúng theo bản vẽ gốc -->
+            <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+              <path d="M 1 1.5 L 9 5 L 1 8.5 z" fill="#73282C" />
+            </marker>
+          </defs>
+
+          <!-- =====================================================
+               1. HỆ THỐNG VIỀN ĐƯỜNG (Mở ngã tư liền mạch y hệt ảnh)
+               ===================================================== -->
+          <g stroke="#73282C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Nhánh trên Xa Lộ Hà Nội (Biên Hòa xuống) -->
+            <line x1="158" y1="36" x2="158" y2="144"/>
+            <line x1="186" y1="36" x2="186" y2="144"/>
+
+            <!-- Nhánh dưới Xa Lộ Hà Nội (Sài Gòn lên) -->
+            <line x1="158" y1="176" x2="158" y2="310"/>
+            <line x1="186" y1="176" x2="186" y2="310"/>
+
+            <!-- Đường ngang bên trái (Võ Văn Ngân) -->
+            <line x1="30" y1="144" x2="158" y2="144"/>
+            <line x1="30" y1="176" x2="158" y2="176"/>
+
+            <!-- Đường ngang giữa (Lê Văn Việt): có hẻm xéo gần Cây Xăng Ngô Quyền -->
+            <line x1="186" y1="144" x2="292" y2="144"/>
+            <!-- Hẻm xéo phía trên Lê Văn Việt -->
+            <line x1="292" y1="144" x2="272" y2="90"/>
+            <line x1="310" y1="144" x2="290" y2="90"/>
+            <!-- Tiếp tục viền trên Lê Văn Việt tới Trương Văn Thành -->
+            <line x1="310" y1="144" x2="486" y2="144"/>
+
+            <!-- Viền dưới Lê Văn Việt: tách nhánh đường Trương Văn Hải -->
+            <line x1="186" y1="176" x2="378" y2="176"/>
+            <line x1="378" y1="176" x2="378" y2="310"/>
+            <line x1="404" y1="176" x2="404" y2="310"/>
+            <line x1="404" y1="176" x2="486" y2="176"/>
+
+            <!-- Đường Trương Văn Thành (nhánh trên hơi bẻ góc nhẹ ở đỉnh như ảnh) -->
+            <polyline points="486,144 486,44 478,24"/>
+            <polyline points="512,144 512,40 504,20"/>
+
+            <!-- Đường Đình Phong Phú (nhánh dưới thẳng hàng Trương Văn Thành) -->
+            <line x1="486" y1="176" x2="486" y2="310"/>
+            <line x1="512" y1="176" x2="512" y2="310"/>
+
+            <!-- Đường ngang bên phải (Lê Văn Việt) -->
+            <line x1="512" y1="144" x2="690" y2="144"/>
+            <line x1="512" y1="176" x2="690" y2="176"/>
+          </g>
+
+          <!-- =====================================================
+               2. TÊN ĐƯỜNG & ĐỊA DANH NẰM TRONG LÒNG ĐƯỜNG
+               ===================================================== -->
+          <text x="172" y="25" text-anchor="middle" fill="#73282C" font-size="11" font-weight="700">BIÊN HÒA</text>
+          <text x="172" y="328" text-anchor="middle" fill="#73282C" font-size="11" font-weight="700">SÀI GÒN</text>
+
+          <text x="86" y="164" text-anchor="middle" fill="#73282C" font-size="10" font-weight="600">VÕ VĂN NGÂN</text>
+          <text x="305" y="164" text-anchor="middle" fill="#73282C" font-size="10.5" font-weight="600">LÊ VĂN VIỆT</text>
+          <text x="635" y="164" text-anchor="middle" fill="#73282C" font-size="10.5" font-weight="600">LÊ VĂN VIỆT</text>
+
+          <!-- Chữ dọc trong lòng đường -->
+          <text x="176" y="226" text-anchor="middle" fill="#73282C" font-size="11" font-weight="700" transform="rotate(-90 176,226)">XA LỘ HÀ NỘI</text>
+          <text x="395" y="232" text-anchor="middle" fill="#73282C" font-size="9.5" font-weight="600" transform="rotate(-90 395,232)">TRƯƠNG VĂN HẢI</text>
+          <text x="503" y="232" text-anchor="middle" fill="#73282C" font-size="9.5" font-weight="600" transform="rotate(-90 503,232)">ĐÌNH PHONG PHÚ</text>
+          <text x="503" y="86" text-anchor="middle" fill="#73282C" font-size="9" font-weight="600" transform="rotate(-90 503,86)">TRƯƠNG VĂN THÀNH</text>
+
+          <!-- =====================================================
+               3. CÁC MŨI TÊN CHỈ HƯỚNG TRONG LÒNG ĐƯỜNG (Y HỆT ẢNH)
+               ===================================================== -->
+          <!-- Mũi tên từ Biên Hòa đi xuống -->
+          <line x1="172" y1="36" x2="172" y2="68" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- Mũi tên góc vuông rẽ trái từ Xa lộ Hà Nội vào Lê Văn Việt -->
+          <polyline points="193,115 193,136 207,136" stroke="#73282C" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+          <!-- Mũi tên đi thẳng qua Ngã tư Thủ Đức -->
+          <line x1="154" y1="160" x2="192" y2="160" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- Mũi tên từ Sài Gòn đi lên -->
+          <line x1="172" y1="308" x2="172" y2="278" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- Mũi tên đi thẳng trên đường Lê Văn Việt -->
+          <line x1="372" y1="160" x2="412" y2="160" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- Mũi tên từ Trương Văn Hải đi lên -->
+          <line x1="391" y1="308" x2="391" y2="278" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- Mũi tên từ Đình Phong Phú đi lên -->
+          <line x1="499" y1="308" x2="499" y2="278" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- Mũi tên vuông góc rẽ từ Lê Văn Việt lên Trương Văn Thành -->
+          <polyline points="474,160 499,160 499,140" stroke="#73282C" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+          <!-- Mũi tên từ bên phải Lê Văn Việt đi sang trái -->
+          <line x1="592" y1="160" x2="552" y2="160" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+          <!-- Mũi tên chỉ vào Ngã tư đèn xanh - đỏ -->
+          <line x1="528" y1="192" x2="510" y2="174" stroke="#73282C" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <!-- =====================================================
+               4. CÁC MỐC ĐỊA ĐIỂM & BIỂU TƯỢNG (ICONS) Y HỆT ẢNH
+               ===================================================== -->
+          <!-- Ngã tư Thủ Đức -->
+          <text x="128" y="126" text-anchor="middle" fill="#73282C" font-size="9.5" font-weight="600">NGÃ TƯ<tspan x="128" dy="12">THỦ ĐỨC</tspan></text>
+
+          <!-- Cây xăng Ngô Quyền -->
+          <g transform="translate(333, 94)" stroke="#73282C" fill="none">
+            <rect x="2" y="4" width="10" height="16" stroke-width="1.8" fill="#73282C"/>
+            <rect x="4" y="6" width="6" height="5" fill="#FAF6E8" stroke="none"/>
+            <path d="M12 8 L16 8 L16 17 C16 19 18 19 18 17 L18 6 L15 3" stroke-width="1.6"/>
+            <line x1="0" y1="20" x2="14" y2="20" stroke-width="2"/>
+          </g>
+          <text x="342" y="126" text-anchor="middle" fill="#73282C" font-size="8" font-weight="600">CÂY XĂNG<tspan x="342" dy="10">NGÔ QUYỀN</tspan></text>
+
+          <!-- CÁT ĐẰNG PALACE + Icon Tòa Nhà -->
+          <text x="395" y="68" text-anchor="middle" fill="#73282C" font-size="13" font-weight="700" letter-spacing="0.5">CÁT ĐẰNG<tspan x="395" dy="16">PALACE</tspan></text>
+          <g transform="translate(435, 52)" fill="#73282C">
+            <!-- Mái vòm cổ điển của tòa nhà -->
+            <path d="M4 12 L22 3 L40 12 L40 36 L4 36 Z"/>
+            <path d="M2 10 L22 0 L42 10" stroke="#73282C" stroke-width="2.2" fill="none"/>
+            <!-- Cổng vòm và cửa sổ màu kem -->
+            <path d="M16 36 L16 20 C16 15 28 15 28 20 L28 36 Z" fill="#FAF6E8"/>
+            <line x1="22" y1="15" x2="22" y2="36" stroke="#73282C" stroke-width="1.8"/>
+            <rect x="8" y="17" width="4" height="5" rx="1" fill="#FAF6E8"/>
+            <rect x="8" y="25" width="4" height="5" rx="1" fill="#FAF6E8"/>
+            <rect x="32" y="17" width="4" height="5" rx="1" fill="#FAF6E8"/>
+            <rect x="32" y="25" width="4" height="5" rx="1" fill="#FAF6E8"/>
+            <rect x="0" y="35" width="44" height="3.5" rx="1" fill="#73282C"/>
+          </g>
+
+          <!-- Trạm Y Tế P. Hiệp Phú (Vòng tròn chữ thập kép + chữ bên phải) -->
+          <g transform="translate(534, 129)" stroke="#73282C" fill="none">
+            <circle cx="0" cy="0" r="10.5" stroke-width="1.6"/>
+            <circle cx="0" cy="0" r="8" stroke-width="1"/>
+            <path d="M-2 -5 H2 V-2 H5 V2 H2 V5 H-2 V2 H-5 V-2 H-2 Z" stroke-width="1.2"/>
+          </g>
+          <text x="550" y="127" text-anchor="start" fill="#73282C" font-size="8.5" font-weight="600">TRẠM Y TẾ<tspan x="550" dy="11">P. HIỆP PHÚ</tspan></text>
+
+          <!-- Siêu thị Coop Mart (Khung chữ nhật gạch chéo X) -->
+          <g transform="translate(194, 185)" stroke="#73282C" stroke-width="1.8" fill="none">
+            <rect x="0" y="0" width="48" height="22"/>
+            <line x1="0" y1="0" x2="48" y2="22" stroke-width="1.3"/>
+            <line x1="48" y1="0" x2="0" y2="22" stroke-width="1.3"/>
+          </g>
+          <text x="218" y="220" text-anchor="middle" fill="#73282C" font-size="9" font-weight="600">SIÊU<tspan x="218" dy="11">THỊ</tspan><tspan x="218" dy="11">COOP MART</tspan></text>
+
+          <!-- Bệnh viện QĐ Miền Đông (Vòng tròn chữ thập kép) -->
+          <g transform="translate(279, 196)" stroke="#73282C" fill="none">
+            <circle cx="0" cy="0" r="10.5" stroke-width="1.6"/>
+            <circle cx="0" cy="0" r="8" stroke-width="1"/>
+            <path d="M-2 -5 H2 V-2 H5 V2 H2 V5 H-2 V2 H-5 V-2 H-2 Z" stroke-width="1.2"/>
+          </g>
+          <text x="279" y="218" text-anchor="middle" fill="#73282C" font-size="8.5" font-weight="600">BỆNH<tspan x="279" dy="10.5">VIỆN</tspan><tspan x="279" dy="10.5">QĐ</tspan><tspan x="279" dy="10.5">MIỀN</tspan><tspan x="279" dy="10.5">ĐÔNG</tspan></text>
+
+          <!-- Vincom Plaza (Khung chữ nhật gạch chéo X) -->
+          <g transform="translate(322, 185)" stroke="#73282C" stroke-width="1.8" fill="none">
+            <rect x="0" y="0" width="48" height="22"/>
+            <line x1="0" y1="0" x2="48" y2="22" stroke-width="1.3"/>
+            <line x1="48" y1="0" x2="0" y2="22" stroke-width="1.3"/>
+          </g>
+          <text x="346" y="220" text-anchor="middle" fill="#73282C" font-size="9" font-weight="600">VINCOM<tspan x="346" dy="11">PLAZA</tspan></text>
+
+          <!-- Ngã tư đèn xanh - đỏ -->
+          <text x="556" y="198" text-anchor="middle" fill="#73282C" font-size="8.5" font-weight="600">NGÃ TƯ<tspan x="556" dy="11">ĐÈN XANH- ĐỎ</tspan></text>
+        </svg>
+      </div>
+      <div style="display:flex; justify-content:center; gap: 12px;">
+        <a class="btn-small-action" style="background:var(--burgundy); color:var(--cream); padding: 9px 22px; font-size: 12.5px;" href="https://www.google.com/maps/search/?api=1&query=Cat+Dang+Palace+11+Truong+Van+Thanh+Tang+Nhon+Phu+Thu+Duc" target="_blank" rel="noopener">
+          📍 Mở Google Maps
+        </a>
+        <button class="btn-small-action" style="padding: 9px 22px; font-size: 12.5px;" onclick="closeMapModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Đọc tên khách mời nếu trong link có ?to=Tên_Khách
+    function loadGuestNameFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const guest = params.get('to') || params.get('guest') || params.get('k');
+      if (guest && guest.trim() !== '') {
+        const cleanName = guest.trim();
+        document.getElementById('envelopeGuestName').textContent = cleanName;
+        document.getElementById('archGuestName').textContent = cleanName;
+      }
+    }
+
+    // 2. Mở thiệp: ẩn phong bì bên ngoài, hiện 2 tờ thiệp vừa khít màn hình
+    function openInvitation() {
+      document.getElementById('envelopeScreen').classList.add('hidden');
+      document.getElementById('openedCardsScreen').classList.add('active');
+    }
+
+    // 3. Đóng thiệp: quay lại phong bì bên ngoài
+    function closeInvitation() {
+      document.getElementById('openedCardsScreen').classList.remove('active');
+      document.getElementById('envelopeScreen').classList.remove('hidden');
+    }
+
+    // 4. Mở / Đóng sơ đồ đường đi
+    function openMapModal() {
+      document.getElementById('mapModal').classList.add('active');
+    }
+    function closeMapModal() {
+      document.getElementById('mapModal').classList.remove('active');
+    }
+
+    // 5. Tạo cánh hoa rơi nhẹ nhàng
+    function createPetals() {
+      const container = document.getElementById('petalsContainer');
+      for (let i = 0; i < 12; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        const size = Math.random() * 7 + 6;
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size * 1.3}px`;
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.animationDuration = `${Math.random() * 7 + 9}s`;
+        petal.style.animationDelay = `${Math.random() * 6}s`;
+        container.appendChild(petal);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadGuestNameFromURL();
+      createPetals();
+    });
+  </script>
+</body>
+</html>
