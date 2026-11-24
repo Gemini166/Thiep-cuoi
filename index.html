@@ -317,14 +317,14 @@
 
     @media (max-width: 720px) {
       body {
-        justify-content: center;
-        padding: 12px 10px 24px;
+        justify-content: flex-start;
+        padding: 14px 10px 30px;
       }
       .cards-grid {
         grid-template-columns: 1fr;
         max-width: 390px;
         margin: 0 auto;
-        gap: 16px;
+        gap: 18px;
       }
       .envelope-rect {
         aspect-ratio: auto;
@@ -338,7 +338,7 @@
         gap: 14px;
       }
       .couple-script-title {
-        font-size: clamp(36px, 10vw, 46px);
+        font-size: 38px;
       }
       .couple-script-title span.groom,
       .couple-script-title span.bride {
@@ -347,13 +347,9 @@
       .save-the-date {
         font-size: 16px;
       }
-      .venue-name {
-        white-space: normal;
-        font-size: 14px;
-      }
     }
 
-    /* --- TỜ 1: THIỆP ĐỎ ĐÔ (LỄ THÀNH HÔN) - ĐƠN VỊ PX CỐ ĐỊNH CHỐNG NHẢY CHỮ --- */
+    /* --- TỜ 1: THIỆP ĐỎ ĐÔ (LỄ THÀNH HÔN) - CỐ ĐỊNH CỠ CHỮ PX KHÔNG BỊ NHẢY DÒNG --- */
     .card-burgundy {
       background-color: var(--burgundy);
       background-image: 
@@ -365,6 +361,8 @@
       box-shadow: var(--shadow-card);
       display: flex;
       flex-direction: column;
+      -webkit-text-size-adjust: none !important;
+      text-size-adjust: none !important;
     }
 
     .card-burgundy-inner {
@@ -376,7 +374,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
     }
 
     .parents-grid {
@@ -395,15 +393,17 @@
     }
     .parent-box .parent-name {
       font-weight: 600;
-      font-size: 13.5px;
+      font-size: 13px;
       display: block;
+      white-space: nowrap;
     }
     .parent-box .parent-addr {
-      font-size: 11.5px;
+      font-size: 11px;
       font-style: italic;
       opacity: 0.9;
       margin-top: 2px;
       display: block;
+      white-space: nowrap;
     }
 
     .announce-text {
@@ -418,11 +418,12 @@
     }
     .couple-names-formal .script-name {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(24px, 2.4vw, 31px);
+      font-size: 27px;
       font-weight: 400;
-      line-height: 1.2;
+      line-height: 1.22;
       color: #FFFDF7;
       display: block;
+      white-space: nowrap;
     }
     .couple-names-formal .amp {
       font-family: 'Great Vibes', cursive;
@@ -445,7 +446,7 @@
     }
 
     .ceremony-footer {
-      font-size: 13.8px;
+      font-size: 13.5px;
       line-height: 1.42;
     }
     .ceremony-date {
@@ -453,14 +454,16 @@
       font-weight: 600;
       letter-spacing: 2.5px;
       margin: 2px 0;
+      white-space: nowrap;
     }
     .lunar-date {
       font-style: italic;
-      font-size: 12.5px;
+      font-size: 12px;
       opacity: 0.85;
+      white-space: nowrap;
     }
 
-    /* --- TỜ 2: THIỆP KEM VÒM (TIỆC CƯỚI NHÀ HÀNG) - ĐƠN VỊ PX CỐ ĐỊNH --- */
+    /* --- TỜ 2: THIỆP KEM VÒM (TIỆC CƯỚI NHÀ HÀNG) - CỐ ĐỊNH CỠ CHỮ PX KHÔNG BỊ NHẢY DÒNG --- */
     .card-arch-wrapper {
       background-color: var(--cream);
       background-image: 
@@ -472,19 +475,21 @@
       border: 1px solid var(--paper-border);
       display: flex;
       flex-direction: column;
+      -webkit-text-size-adjust: none !important;
+      text-size-adjust: none !important;
     }
 
     .card-arch-inner {
       border: 1px solid rgba(115, 40, 44, 0.45);
       border-radius: 180px 180px 9px 9px;
-      padding: 20px 14px 16px;
+      padding: 20px 12px 16px;
       text-align: center;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       color: var(--burgundy);
-      gap: 6px;
+      gap: 8px;
     }
 
     .arch-monogram {
@@ -503,14 +508,14 @@
       max-width: 230px;
       margin: 0 auto 6px;
       padding-bottom: 2px;
-      font-size: 17.5px;
+      font-size: 17px;
       font-weight: 700;
       font-style: italic;
       color: var(--burgundy);
     }
 
     .invite-subtext {
-      font-size: 13.5px;
+      font-size: 13px;
       margin-bottom: 8px;
       color: var(--text-dark);
     }
@@ -519,21 +524,22 @@
       margin-bottom: 6px;
     }
     .venue-name {
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 700;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
       text-transform: uppercase;
       margin-bottom: 4px;
       color: var(--burgundy);
+      white-space: nowrap;
     }
     .venue-address {
-      font-size: 13.5px;
-      line-height: 1.35;
+      font-size: 13px;
+      line-height: 1.38;
       color: var(--text-dark);
     }
 
     .time-label {
-      font-size: 12.8px;
+      font-size: 12.5px;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -546,7 +552,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      max-width: 250px;
+      max-width: 245px;
       margin: 0 auto 2px;
     }
     .date-side {
@@ -554,26 +560,27 @@
       border-top: 1px solid var(--burgundy);
       border-bottom: 1px solid var(--burgundy);
       padding: 3px 2px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
+      white-space: nowrap;
     }
     .date-center-num {
-      font-size: 33px;
+      font-size: 32px;
       font-weight: 700;
       line-height: 1;
       padding: 0 2px;
     }
     .date-year {
-      font-size: 16.5px;
+      font-size: 16px;
       letter-spacing: 2.5px;
       font-weight: 600;
       margin-bottom: 2px;
     }
 
     .thanks-quote {
-      font-size: 13.5px;
+      font-size: 13px;
       line-height: 1.38;
       margin: 6px 0;
     }
@@ -1115,16 +1122,36 @@
       }
     }
 
-    // 2. Mở thiệp: ẩn phong bì bên ngoài, hiện 2 tờ thiệp vừa khít màn hình
+    // 2. Mở thiệp: ẩn phong bì bên ngoài, hiện 2 tờ thiệp và tự động thu phóng vừa khít trên điện thoại cài chữ to
     function openInvitation() {
       document.getElementById('envelopeScreen').classList.add('hidden');
       document.getElementById('openedCardsScreen').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      fitCardsForLargeTextDevices();
     }
 
     // 3. Đóng thiệp: quay lại phong bì bên ngoài
     function closeInvitation() {
       document.getElementById('openedCardsScreen').classList.remove('active');
       document.getElementById('envelopeScreen').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      fitCardsForLargeTextDevices();
+    }
+
+    // Tự động chống phóng chữ của hệ điều hành Android/Zalo/iOS khi người lớn tuổi bật "Font chữ cực lớn"
+    function fitCardsForLargeTextDevices() {
+      const testEl = document.createElement('div');
+      testEl.style.cssText = 'font-size:16px; position:absolute; visibility:hidden; pointer-events:none;';
+      testEl.textContent = 'M';
+      document.body.appendChild(testEl);
+      const computedPx = parseFloat(window.getComputedStyle(testEl).fontSize) || 16;
+      document.body.removeChild(testEl);
+
+      // Nếu hệ điều hành cưỡng bức phóng to font (> 16.5px), tự động thu tỷ lệ ngược lại để giữ nguyên kích thước chuẩn
+      if (computedPx > 16.5) {
+        const scaleRatio = 16 / computedPx;
+        document.documentElement.style.zoom = scaleRatio;
+      }
     }
 
     // 4. Mở / Đóng sơ đồ đường đi
@@ -1154,6 +1181,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       loadGuestNameFromURL();
       createPetals();
+      fitCardsForLargeTextDevices();
     });
   </script>
 </body>
