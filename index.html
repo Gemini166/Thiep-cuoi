@@ -34,6 +34,14 @@
       padding: 0;
     }
 
+    /* Chặn trình duyệt điện thoại (Zalo, iOS, Android) tự động phóng to chữ làm vỡ khung thiệp */
+    html {
+      font-size: 16px !important;
+      -webkit-text-size-adjust: 100% !important;
+      -moz-text-size-adjust: 100% !important;
+      text-size-adjust: 100% !important;
+    }
+
     body {
       font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
       font-variant-numeric: lining-nums;
@@ -45,13 +53,17 @@
         repeating-linear-gradient(0deg, rgba(255,255,255,0.25) 0px, rgba(255,255,255,0.25) 1px, transparent 1px, transparent 4px);
       color: var(--burgundy);
       min-height: 100vh;
+      min-height: 100dvh;
       overflow-x: hidden;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 16px;
       position: relative;
+      -webkit-text-size-adjust: 100% !important;
+      text-size-adjust: 100% !important;
     }
 
     /* Hiệu ứng cánh hoa rơi nhẹ */
@@ -137,12 +149,11 @@
       border-radius: 14px;
       box-shadow: var(--shadow-soft);
       position: relative;
-      overflow: hidden;
       aspect-ratio: 16 / 10;
-      min-height: 430px;
-      max-height: 82vh;
+      min-height: 410px;
       display: flex;
       flex-direction: column;
+      cursor: pointer;
       /* Vân giấy gân Nhật */
       background-image: 
         repeating-linear-gradient(90deg, rgba(199, 174, 143, 0.07) 0px, rgba(199, 174, 143, 0.07) 1px, transparent 1px, transparent 5px),
@@ -150,24 +161,26 @@
     }
 
     .envelope-inner-border {
-      margin: 16px;
+      margin: 14px;
       border: 1.2px solid rgba(115, 40, 44, 0.32);
       border-radius: 10px;
-      padding: 28px 36px 26px;
+      padding: 24px 28px 24px;
       text-align: center;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      gap: 14px;
       position: relative;
       z-index: 2;
     }
 
     /* Logo Monogram MU Oval */
     .monogram-seal {
-      width: 68px;
-      height: 88px;
+      width: 66px;
+      height: 86px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -182,30 +195,30 @@
     }
 
     .envelope-center-content {
-      my: auto;
+      margin: auto 0;
       width: 100%;
     }
 
     .couple-script-title {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(3rem, 6.5vw, 4.4rem);
+      font-size: clamp(40px, 6.2vw, 66px);
       color: var(--burgundy);
-      line-height: 1.15;
+      line-height: 1.18;
       font-weight: 400;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .couple-script-title span.groom {
       display: block;
-      margin-right: 70px;
+      margin-right: 60px;
     }
     .couple-script-title span.bride {
       display: block;
-      margin-left: 70px;
+      margin-left: 60px;
     }
 
     .save-the-date {
       font-style: italic;
-      font-size: 1.25rem;
+      font-size: 19px;
       letter-spacing: 2px;
       color: var(--burgundy-light);
       margin-top: 6px;
@@ -216,19 +229,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .guest-invite-line {
       display: flex;
       align-items: baseline;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
-      max-width: 440px;
+      max-width: 420px;
     }
     .guest-invite-label {
-      font-size: 1rem;
+      font-size: 15px;
       letter-spacing: 2px;
       font-weight: 600;
       text-transform: uppercase;
@@ -238,11 +251,11 @@
       flex: 1;
       border-bottom: 1.2px dotted var(--burgundy);
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
+      font-size: 21px;
       font-weight: 700;
       font-style: italic;
       color: var(--burgundy);
-      padding: 0 10px 2px;
+      padding: 0 8px 2px;
       text-align: center;
     }
 
@@ -304,25 +317,43 @@
 
     @media (max-width: 720px) {
       body {
-        justify-content: flex-start;
-        padding-top: 56px;
+        justify-content: center;
+        padding: 12px 10px 24px;
       }
       .cards-grid {
         grid-template-columns: 1fr;
-        max-width: 380px;
+        max-width: 390px;
         margin: 0 auto;
+        gap: 16px;
       }
       .envelope-rect {
         aspect-ratio: auto;
-        min-height: 390px;
+        min-height: 0;
+        height: auto;
+        max-height: none;
+      }
+      .envelope-inner-border {
+        margin: 10px;
+        padding: 20px 14px 20px;
+        gap: 14px;
+      }
+      .couple-script-title {
+        font-size: clamp(36px, 10vw, 46px);
       }
       .couple-script-title span.groom,
       .couple-script-title span.bride {
         margin: 0;
       }
+      .save-the-date {
+        font-size: 16px;
+      }
+      .venue-name {
+        white-space: normal;
+        font-size: 14px;
+      }
     }
 
-    /* --- TỜ 1: THIỆP ĐỎ ĐÔ (LỄ THÀNH HÔN) - ĐÃ THU GỌN VỪA MÀN HÌNH --- */
+    /* --- TỜ 1: THIỆP ĐỎ ĐÔ (LỄ THÀNH HÔN) - ĐƠN VỊ PX CỐ ĐỊNH CHỐNG NHẢY CHỮ --- */
     .card-burgundy {
       background-color: var(--burgundy);
       background-image: 
@@ -339,7 +370,7 @@
     .card-burgundy-inner {
       border: 1px solid rgba(253, 251, 242, 0.65);
       border-radius: 9px;
-      padding: 18px 14px 16px;
+      padding: 18px 12px 16px;
       text-align: center;
       flex: 1;
       display: flex;
@@ -351,24 +382,24 @@
     .parents-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      font-size: 0.82rem;
+      gap: 6px;
+      font-size: 13px;
       line-height: 1.38;
     }
     .parent-box h4 {
       font-style: italic;
       font-weight: 500;
-      font-size: 0.82rem;
+      font-size: 13px;
       margin-bottom: 2px;
       opacity: 0.9;
     }
     .parent-box .parent-name {
       font-weight: 600;
-      font-size: 0.86rem;
+      font-size: 13.5px;
       display: block;
     }
     .parent-box .parent-addr {
-      font-size: 0.74rem;
+      font-size: 11.5px;
       font-style: italic;
       opacity: 0.9;
       margin-top: 2px;
@@ -376,7 +407,7 @@
     }
 
     .announce-text {
-      font-size: 0.88rem;
+      font-size: 14px;
       line-height: 1.38;
       margin-bottom: 8px;
       letter-spacing: 0.2px;
@@ -387,23 +418,22 @@
     }
     .couple-names-formal .script-name {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(1.65rem, 2.5vw, 2.05rem);
+      font-size: clamp(24px, 2.4vw, 31px);
       font-weight: 400;
-      line-height: 1.18;
+      line-height: 1.2;
       color: #FFFDF7;
       display: block;
-      white-space: nowrap;
     }
     .couple-names-formal .amp {
       font-family: 'Great Vibes', cursive;
-      font-size: 1.35rem;
+      font-size: 21px;
       margin: 1px 0;
       display: block;
       opacity: 0.9;
     }
     .couple-rank {
       font-style: italic;
-      font-size: 0.8rem;
+      font-size: 13px;
       opacity: 0.88;
       margin-top: 3px;
     }
@@ -415,22 +445,22 @@
     }
 
     .ceremony-footer {
-      font-size: 0.86rem;
+      font-size: 13.8px;
       line-height: 1.42;
     }
     .ceremony-date {
-      font-size: 1.3rem;
+      font-size: 21px;
       font-weight: 600;
       letter-spacing: 2.5px;
       margin: 2px 0;
     }
     .lunar-date {
       font-style: italic;
-      font-size: 0.78rem;
+      font-size: 12.5px;
       opacity: 0.85;
     }
 
-    /* --- TỜ 2: THIỆP KEM VÒM (TIỆC CƯỚI NHÀ HÀNG) - ĐÃ THU GỌN VỪA MÀN HÌNH --- */
+    /* --- TỜ 2: THIỆP KEM VÒM (TIỆC CƯỚI NHÀ HÀNG) - ĐƠN VỊ PX CỐ ĐỊNH --- */
     .card-arch-wrapper {
       background-color: var(--cream);
       background-image: 
@@ -447,7 +477,7 @@
     .card-arch-inner {
       border: 1px solid rgba(115, 40, 44, 0.45);
       border-radius: 180px 180px 9px 9px;
-      padding: 20px 16px 16px;
+      padding: 20px 14px 16px;
       text-align: center;
       flex: 1;
       display: flex;
@@ -464,7 +494,7 @@
     }
 
     .invite-heading {
-      font-size: 0.92rem;
+      font-size: 14.5px;
       margin-bottom: 4px;
     }
 
@@ -473,14 +503,14 @@
       max-width: 230px;
       margin: 0 auto 6px;
       padding-bottom: 2px;
-      font-size: 1.12rem;
+      font-size: 17.5px;
       font-weight: 700;
       font-style: italic;
       color: var(--burgundy);
     }
 
     .invite-subtext {
-      font-size: 0.84rem;
+      font-size: 13.5px;
       margin-bottom: 8px;
       color: var(--text-dark);
     }
@@ -489,22 +519,21 @@
       margin-bottom: 6px;
     }
     .venue-name {
-      font-size: 0.94rem;
+      font-size: 14.5px;
       font-weight: 700;
       letter-spacing: 0.3px;
       text-transform: uppercase;
       margin-bottom: 4px;
       color: var(--burgundy);
-      white-space: nowrap;
     }
     .venue-address {
-      font-size: 0.84rem;
+      font-size: 13.5px;
       line-height: 1.35;
       color: var(--text-dark);
     }
 
     .time-label {
-      font-size: 0.8rem;
+      font-size: 12.8px;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -525,26 +554,26 @@
       border-top: 1px solid var(--burgundy);
       border-bottom: 1px solid var(--burgundy);
       padding: 3px 2px;
-      font-size: 0.76rem;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.8px;
       text-transform: uppercase;
     }
     .date-center-num {
-      font-size: 2.1rem;
+      font-size: 33px;
       font-weight: 700;
       line-height: 1;
       padding: 0 2px;
     }
     .date-year {
-      font-size: 1.05rem;
+      font-size: 16.5px;
       letter-spacing: 2.5px;
       font-weight: 600;
       margin-bottom: 2px;
     }
 
     .thanks-quote {
-      font-size: 0.84rem;
+      font-size: 13.5px;
       line-height: 1.38;
       margin: 6px 0;
     }
@@ -568,7 +597,7 @@
     }
     .timeline-caption {
       font-style: italic;
-      font-size: 0.84rem;
+      font-size: 13.5px;
       font-weight: 500;
     }
 
@@ -680,9 +709,10 @@
 
     <!-- ==========================================================
          MÀN HÌNH 1: PHONG BÌ HÌNH CHỮ NHẬT LỚN (MẶC ĐỊNH HIỆN)
+         Bấm vào bất kỳ đâu trên phong bì đều mở được thiệp
          ========================================================== -->
     <section class="envelope-screen" id="envelopeScreen">
-      <div class="envelope-rect">
+      <div class="envelope-rect" onclick="openInvitation()">
         <div class="envelope-inner-border">
           
           <!-- Logo Monogram MU trong khung Oval -->
