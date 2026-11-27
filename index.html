@@ -26,6 +26,8 @@
       --text-dark: #4A2527;
       --shadow-soft: 0 20px 50px rgba(74, 24, 28, 0.16);
       --shadow-card: 0 12px 32px rgba(60, 20, 22, 0.22);
+      /* Hệ số bù cỡ chữ: JS tự hạ xuống < 1 nếu trình duyệt cưỡng bức phóng to chữ */
+      --k: 1;
     }
 
     * {
@@ -56,14 +58,41 @@
       min-height: 100dvh;
       overflow-x: hidden;
       overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
       position: relative;
       -webkit-text-size-adjust: 100% !important;
       text-size-adjust: 100% !important;
+    }
+
+    /* ==========================================================
+       KHUNG SÂN KHẤU CỐ ĐỊNH: thiệp luôn dựng ở khổ chuẩn (390px điện thoại /
+       780px máy tính) rồi được JS thu-phóng NGUYÊN KHỐI cho vừa chiều ngang
+       màn hình => không vỡ bố cục dù điện thoại đặt chữ to / phóng to trang.
+       ========================================================== */
+    .stage-viewport {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 10px;
+      position: relative;
+      z-index: 2;
+    }
+    .stage-viewport.is-open {
+      justify-content: flex-start;
+    }
+    .stage-frame {
+      position: relative;
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+    .stage-frame > .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
     }
 
     /* Hiệu ứng cánh hoa rơi nhẹ */
@@ -106,7 +135,7 @@
       border-radius: 999px;
       cursor: pointer;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11.5px;
+      font-size: calc(11.5px * var(--k));
       font-weight: 500;
       display: inline-flex;
       align-items: center;
@@ -122,10 +151,8 @@
     }
 
     .container {
-      width: 100%;
-      max-width: 880px;
+      width: 780px; /* JS đặt lại 390px cho điện thoại */
       margin: 0 auto;
-      position: relative;
       z-index: 2;
     }
 
@@ -201,7 +228,7 @@
 
     .couple-script-title {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(40px, 6.2vw, 66px);
+      font-size: calc(66px * var(--k));
       color: var(--burgundy);
       line-height: 1.18;
       font-weight: 400;
@@ -218,7 +245,7 @@
 
     .save-the-date {
       font-style: italic;
-      font-size: 19px;
+      font-size: calc(19px * var(--k));
       letter-spacing: 2px;
       color: var(--burgundy-light);
       margin-top: 6px;
@@ -241,7 +268,7 @@
       max-width: 420px;
     }
     .guest-invite-label {
-      font-size: 15px;
+      font-size: calc(15px * var(--k));
       letter-spacing: 2px;
       font-weight: 600;
       text-transform: uppercase;
@@ -251,7 +278,7 @@
       flex: 1;
       border-bottom: 1.2px dotted var(--burgundy);
       font-family: 'Cormorant Garamond', serif;
-      font-size: 21px;
+      font-size: calc(21px * var(--k));
       font-weight: 700;
       font-style: italic;
       color: var(--burgundy);
@@ -269,7 +296,7 @@
       padding: 11px 30px;
       border-radius: 999px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12.5px;
+      font-size: calc(12.5px * var(--k));
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -315,38 +342,35 @@
       align-items: stretch;
     }
 
-    @media (max-width: 720px) {
-      body {
-        justify-content: flex-start;
-        padding: 14px 10px 30px;
-      }
-      .cards-grid {
-        grid-template-columns: 1fr;
-        max-width: 390px;
-        margin: 0 auto;
-        gap: 18px;
-      }
-      .envelope-rect {
-        aspect-ratio: auto;
-        min-height: 0;
-        height: auto;
-        max-height: none;
-      }
-      .envelope-inner-border {
-        margin: 10px;
-        padding: 20px 14px 20px;
-        gap: 14px;
-      }
-      .couple-script-title {
-        font-size: 38px;
-      }
-      .couple-script-title span.groom,
-      .couple-script-title span.bride {
-        margin: 0;
-      }
-      .save-the-date {
-        font-size: 16px;
-      }
+    /* Bố cục điện thoại: do JS bật class này theo khổ màn hình thực tế
+       (không phụ thuộc media query nên không bị lệch khi máy phóng to chữ) */
+    .layout-mobile .cards-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .layout-mobile .envelope-rect {
+      aspect-ratio: auto;
+      min-height: 0;
+      height: auto;
+      max-height: none;
+    }
+    .layout-mobile .envelope-inner-border {
+      margin: 10px;
+      padding: 22px 14px 22px;
+      gap: 16px;
+    }
+    .layout-mobile .couple-script-title {
+      font-size: calc(42px * var(--k));
+    }
+    .layout-mobile .couple-script-title span.groom,
+    .layout-mobile .couple-script-title span.bride {
+      margin: 0;
+    }
+    .layout-mobile .save-the-date {
+      font-size: calc(16px * var(--k));
+    }
+    .layout-mobile .guest-invite-line {
+      max-width: 320px;
     }
 
     /* --- TỜ 1: THIỆP ĐỎ ĐÔ (LỄ THÀNH HÔN) - CỐ ĐỊNH CỠ CHỮ PX KHÔNG BỊ NHẢY DÒNG --- */
@@ -381,24 +405,24 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 6px;
-      font-size: 13px;
+      font-size: calc(13px * var(--k));
       line-height: 1.38;
     }
     .parent-box h4 {
       font-style: italic;
       font-weight: 500;
-      font-size: 13px;
+      font-size: calc(13px * var(--k));
       margin-bottom: 2px;
       opacity: 0.9;
     }
     .parent-box .parent-name {
       font-weight: 600;
-      font-size: 13px;
+      font-size: calc(13px * var(--k));
       display: block;
       white-space: nowrap;
     }
     .parent-box .parent-addr {
-      font-size: 11px;
+      font-size: calc(11px * var(--k));
       font-style: italic;
       opacity: 0.9;
       margin-top: 2px;
@@ -407,7 +431,7 @@
     }
 
     .announce-text {
-      font-size: 14px;
+      font-size: calc(14px * var(--k));
       line-height: 1.38;
       margin-bottom: 8px;
       letter-spacing: 0.2px;
@@ -418,7 +442,7 @@
     }
     .couple-names-formal .script-name {
       font-family: 'Great Vibes', cursive;
-      font-size: 27px;
+      font-size: calc(27px * var(--k));
       font-weight: 400;
       line-height: 1.22;
       color: #FFFDF7;
@@ -427,14 +451,14 @@
     }
     .couple-names-formal .amp {
       font-family: 'Great Vibes', cursive;
-      font-size: 21px;
+      font-size: calc(21px * var(--k));
       margin: 1px 0;
       display: block;
       opacity: 0.9;
     }
     .couple-rank {
       font-style: italic;
-      font-size: 13px;
+      font-size: calc(13px * var(--k));
       opacity: 0.88;
       margin-top: 3px;
     }
@@ -446,11 +470,11 @@
     }
 
     .ceremony-footer {
-      font-size: 13.5px;
+      font-size: calc(13.5px * var(--k));
       line-height: 1.42;
     }
     .ceremony-date {
-      font-size: 21px;
+      font-size: calc(21px * var(--k));
       font-weight: 600;
       letter-spacing: 2.5px;
       margin: 2px 0;
@@ -458,7 +482,7 @@
     }
     .lunar-date {
       font-style: italic;
-      font-size: 12px;
+      font-size: calc(12px * var(--k));
       opacity: 0.85;
       white-space: nowrap;
     }
@@ -499,7 +523,7 @@
     }
 
     .invite-heading {
-      font-size: 14.5px;
+      font-size: calc(14.5px * var(--k));
       margin-bottom: 4px;
     }
 
@@ -508,14 +532,14 @@
       max-width: 230px;
       margin: 0 auto 6px;
       padding-bottom: 2px;
-      font-size: 17px;
+      font-size: calc(17px * var(--k));
       font-weight: 700;
       font-style: italic;
       color: var(--burgundy);
     }
 
     .invite-subtext {
-      font-size: 13px;
+      font-size: calc(13px * var(--k));
       margin-bottom: 8px;
       color: var(--text-dark);
     }
@@ -524,7 +548,7 @@
       margin-bottom: 6px;
     }
     .venue-name {
-      font-size: 13.5px;
+      font-size: calc(13.5px * var(--k));
       font-weight: 700;
       letter-spacing: 0.2px;
       text-transform: uppercase;
@@ -533,13 +557,13 @@
       white-space: nowrap;
     }
     .venue-address {
-      font-size: 13px;
+      font-size: calc(13px * var(--k));
       line-height: 1.38;
       color: var(--text-dark);
     }
 
     .time-label {
-      font-size: 12.5px;
+      font-size: calc(12.5px * var(--k));
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -560,27 +584,27 @@
       border-top: 1px solid var(--burgundy);
       border-bottom: 1px solid var(--burgundy);
       padding: 3px 2px;
-      font-size: 11.5px;
+      font-size: calc(11.5px * var(--k));
       font-weight: 600;
       letter-spacing: 0.6px;
       text-transform: uppercase;
       white-space: nowrap;
     }
     .date-center-num {
-      font-size: 32px;
+      font-size: calc(32px * var(--k));
       font-weight: 700;
       line-height: 1;
       padding: 0 2px;
     }
     .date-year {
-      font-size: 16px;
+      font-size: calc(16px * var(--k));
       letter-spacing: 2.5px;
       font-weight: 600;
       margin-bottom: 2px;
     }
 
     .thanks-quote {
-      font-size: 13px;
+      font-size: calc(13px * var(--k));
       line-height: 1.38;
       margin: 6px 0;
     }
@@ -604,7 +628,7 @@
     }
     .timeline-caption {
       font-style: italic;
-      font-size: 13.5px;
+      font-size: calc(13.5px * var(--k));
       font-weight: 500;
     }
 
@@ -625,7 +649,7 @@
       padding: 7px 16px;
       border-radius: 999px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11.5px;
+      font-size: calc(11.5px * var(--k));
       font-weight: 600;
       text-decoration: none;
       display: inline-flex;
@@ -664,6 +688,18 @@
       text-align: center;
       box-shadow: 0 20px 50px rgba(0,0,0,0.35);
       animation: fadeInScale 0.3s ease forwards;
+      max-height: 100%;
+      overflow-y: auto;
+    }
+    .layout-mobile .modal-box {
+      padding: 18px 12px;
+    }
+    .layout-mobile .drawn-map-box {
+      padding: 8px 4px;
+      margin: 10px 0 14px;
+    }
+    .layout-mobile .drawn-map-svg {
+      min-height: 0;
     }
     .drawn-map-box {
       background: #FAF6E8;
@@ -712,7 +748,9 @@
     </defs>
   </svg>
 
-  <div class="container">
+  <div class="stage-viewport" id="stageViewport">
+  <div class="stage-frame" id="stageFrame">
+  <div class="container" id="stage">
 
     <!-- ==========================================================
          MÀN HÌNH 1: PHONG BÌ HÌNH CHỮ NHẬT LỚN (MẶC ĐỊNH HIỆN)
@@ -937,6 +975,8 @@
     </section>
 
   </div>
+  </div>
+  </div>
 
   <!-- Modal Sơ Đồ Đường Đi (Chỉ hiện khi bấm Xem sơ đồ) -->
   <div class="modal-backdrop" id="mapModal" onclick="if(event.target===this) closeMapModal()">
@@ -1122,36 +1162,82 @@
       }
     }
 
-    // 2. Mở thiệp: ẩn phong bì bên ngoài, hiện 2 tờ thiệp và tự động thu phóng vừa khít trên điện thoại cài chữ to
+    // 2. Mở thiệp: ẩn phong bì bên ngoài, hiện 2 tờ thiệp
     function openInvitation() {
       document.getElementById('envelopeScreen').classList.add('hidden');
       document.getElementById('openedCardsScreen').classList.add('active');
+      document.getElementById('stageViewport').classList.add('is-open');
+      fitStage();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      fitCardsForLargeTextDevices();
     }
 
     // 3. Đóng thiệp: quay lại phong bì bên ngoài
     function closeInvitation() {
       document.getElementById('openedCardsScreen').classList.remove('active');
       document.getElementById('envelopeScreen').classList.remove('hidden');
+      document.getElementById('stageViewport').classList.remove('is-open');
+      fitStage();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      fitCardsForLargeTextDevices();
     }
 
-    // Tự động chống phóng chữ của hệ điều hành Android/Zalo/iOS khi người lớn tuổi bật "Font chữ cực lớn"
-    function fitCardsForLargeTextDevices() {
-      const testEl = document.createElement('div');
-      testEl.style.cssText = 'font-size:16px; position:absolute; visibility:hidden; pointer-events:none;';
-      testEl.textContent = 'M';
-      document.body.appendChild(testEl);
-      const computedPx = parseFloat(window.getComputedStyle(testEl).fontSize) || 16;
-      document.body.removeChild(testEl);
+    /* ==========================================================
+       CHỐNG VỠ THIỆP KHI ĐIỆN THOẠI ĐẶT CHỮ TO (người lớn tuổi)
+       ----------------------------------------------------------
+       (a) Chrome/Zalo/Samsung đời mới phóng to CẢ TRANG => màn hình "hẹp" lại.
+           Thiệp luôn dựng ở khổ cố định rồi thu-phóng nguyên khối cho vừa
+           chiều ngang và căn giữa => bố cục y hệt trên mọi máy.
+       (b) Trình duyệt nào vẫn cố phóng riêng chữ: đo chữ thật so với chữ vẽ
+           trên canvas (canvas không bị phóng) rồi bù ngược qua biến --k.
+       ========================================================== */
+    const MOBILE_W = 390;   // khổ thiệp chuẩn trên điện thoại
+    const DESKTOP_W = 780;  // khổ thiệp chuẩn trên máy tính
 
-      // Nếu hệ điều hành cưỡng bức phóng to font (> 16.5px), tự động thu tỷ lệ ngược lại để giữ nguyên kích thước chuẩn
-      if (computedPx > 16.5) {
-        const scaleRatio = 16 / computedPx;
-        document.documentElement.style.zoom = scaleRatio;
-      }
+    function compensateTextInflation() {
+      try {
+        const root = document.documentElement;
+        root.style.setProperty('--k', '1');
+        const text = 'MMMMMMMMMMMMMMMMMMMM';
+        const probe = document.createElement('span');
+        probe.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:nowrap;font-family:serif;font-size:100px;line-height:1;';
+        probe.textContent = text;
+        document.body.appendChild(probe);
+        const domW = probe.getBoundingClientRect().width;
+        document.body.removeChild(probe);
+        const ctx = document.createElement('canvas').getContext('2d');
+        ctx.font = '100px serif';
+        const canvasW = ctx.measureText(text).width;
+        if (!domW || !canvasW) return;
+        const ratio = domW / canvasW;
+        if (ratio > 1.06 && ratio < 4) {
+          root.style.setProperty('--k', String(1 / ratio));
+        }
+      } catch (e) { /* bỏ qua, vẫn hiển thị bình thường */ }
+    }
+
+    function fitStage() {
+      const root = document.documentElement;
+      const stage = document.getElementById('stage');
+      const frame = document.getElementById('stageFrame');
+      const vw = root.clientWidth || window.innerWidth;
+      const isDesktop = vw >= DESKTOP_W + 40;
+
+      root.classList.toggle('layout-mobile', !isDesktop);
+      root.classList.toggle('layout-desktop', isDesktop);
+
+      const designW = isDesktop ? DESKTOP_W : MOBILE_W;
+      const avail = vw - 20; // chừa lề 10px mỗi bên
+      const maxScale = isDesktop ? 1 : 1.15;
+      const scale = Math.min(maxScale, avail / designW);
+
+      stage.style.width = designW + 'px';
+      stage.style.transform = 'scale(' + scale + ')';
+      frame.style.width = (designW * scale) + 'px';
+      frame.style.height = (stage.offsetHeight * scale) + 'px';
+    }
+
+    function refreshLayout() {
+      compensateTextInflation();
+      fitStage();
     }
 
     // 4. Mở / Đóng sơ đồ đường đi
@@ -1181,7 +1267,22 @@
     window.addEventListener('DOMContentLoaded', () => {
       loadGuestNameFromURL();
       createPetals();
-      fitCardsForLargeTextDevices();
+      refreshLayout();
+
+      // Cập nhật lại khi xoay máy, đổi cỡ cửa sổ, hoặc font tải xong
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(fitStage, 80);
+      });
+      window.addEventListener('orientationchange', () => setTimeout(refreshLayout, 250));
+      window.addEventListener('load', refreshLayout);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(refreshLayout);
+      }
+      if (window.ResizeObserver) {
+        new ResizeObserver(fitStage).observe(document.getElementById('stage'));
+      }
     });
   </script>
 </body>
